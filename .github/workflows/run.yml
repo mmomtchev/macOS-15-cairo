@@ -3,6 +3,7 @@ on: workflow_dispatch
 jobs:
   cairo:
     strategy:
+      fail-fast: false
       matrix:
         os: [ macos-15, macos-15-intel ]
         
