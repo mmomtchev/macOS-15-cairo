@@ -1,0 +1,15 @@
+on: workflow_dispatch
+
+jobs:
+  cairo:
+    strategy:
+      matrix:
+        os: [ macos-15, macos-15-intel ]
+        
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v5
+    - run: cc -o test-cairo.o -c test-cairo.c
+    - run: cc -o test-cairo test-cairo.o $(pkg-config --libs --static cairo)
+    
