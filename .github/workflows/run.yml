@@ -11,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
+    - run: brew install gettext
+    - run: pkg-config --libs --static cairo
     - run: cc -o test-cairo.o -c test-cairo.c
     - run: cc -o test-cairo test-cairo.o $(pkg-config --libs --static cairo)
     
